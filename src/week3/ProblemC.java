@@ -19,6 +19,28 @@ public class ProblemC {
 				int length = line.length();
 				boolean[] checkArray= new boolean[length];
 				checkArray[0] = true;
+				boolean[] intCheck = new boolean[9];
+				for(int i = 0; i < length; i++){
+					int intIndex = Integer.parseInt("" +line.charAt(i));
+					if(intIndex == 0 ){
+						int tens = 1;
+						for(int j = i +1; j < length; j++){
+							tens *=10;
+						}
+						int lineNum = Integer.parseInt(line) + tens;
+						line = "" + lineNum;
+						roundNum = false;
+						break;
+					}
+					if( !intCheck[intIndex -1]) intCheck[intIndex -1] = true;
+					else {
+						roundNum = false;
+						int lineNum = Integer.parseInt(line) +1;
+						line = "" + lineNum;
+						break;
+					}
+				}
+				if(!roundNum) continue;
 				for (int i = 1; i < length; i++) {
 					checkArray[i] = false;
 				}
@@ -40,17 +62,7 @@ public class ProblemC {
 					line = "" + lineNum;
 				}
 				else{
-					boolean[] intCheck = new boolean[9];
-					for(int i = 0; i < length; i++){
-						int intIndex = Integer.parseInt("" +line.charAt(i));
-						if( !intCheck[intIndex -1]) intCheck[intIndex -1] = true;
-						else {
-							roundNum = false;
-							int lineNum = Integer.parseInt(line) +1;
-							line = "" + lineNum;
-							break;
-						}
-					}
+					
 				}
 				if(roundNum == true) 
 					System.out.printf("Case %d: %s\n", count,line);
