@@ -22,23 +22,25 @@ public class ProblemC {
 				boolean[] intCheck = new boolean[9];
 				for(int i = 0; i < length; i++){
 					int intIndex = Integer.parseInt("" +line.charAt(i));
-					if(intIndex == 0 ){
+					if(intIndex == 0 || intCheck[intIndex -1]){
 						int tens = 1;
 						for(int j = i +1; j < length; j++){
 							tens *=10;
-						}
-						int lineNum = Integer.parseInt(line) + tens;
+						}	
+						String subLineStr = line.substring(i +1);
+						int subLine;
+						if(subLineStr.length() == 0) subLine = 0;
+						else subLine = Integer.parseInt(subLineStr);
+						int addition = tens - subLine;
+						if(addition <1) 
+							addition = 1;
+						int lineNum = Integer.parseInt(line) + addition;
 						line = "" + lineNum;
 						roundNum = false;
 						break;
 					}
-					if( !intCheck[intIndex -1]) intCheck[intIndex -1] = true;
-					else {
-						roundNum = false;
-						int lineNum = Integer.parseInt(line) +1;
-						line = "" + lineNum;
-						break;
-					}
+					else intCheck[intIndex -1] = true;
+			
 				}
 				if(!roundNum) continue;
 				for (int i = 1; i < length; i++) {
