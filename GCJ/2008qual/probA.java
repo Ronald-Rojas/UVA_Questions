@@ -3,26 +3,26 @@ import java.util.Hashtable;
 import java.util.Enumeration;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.FileReader;
 
-
-public class proba{
+public class probA{
     public static void main(String[] args) throws IOException{
         
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new FileReader("A-small-practice.in"));
         String inputLine = br.readLine();
         int size = Integer.parseInt(inputLine);
         int engines;
         int switches;
         int queries;
         String engineStr;
-        Hashtable<String, boolean> engineHash = new Hashtable<String, boolean>();
-        for(int cases = 0 ; cases < size; cases++){
+        Hashtable<String, Boolean> engineHash = new Hashtable<String, Boolean>();
+        for(int cases = 1 ; cases <= size; cases++){
             switches = 0;
             engineHash.clear();
             engines = Integer.parseInt(br.readLine()); // find number of engines
-            for(int enNum = 0; enNum < engines; enNum++); // go through the number of engines 
-            queries = br.readLine();
+            for(int enNum = 0; enNum < engines; enNum++) br.readLine(); // go through the number of engines 
+            queries = Integer.parseInt(br.readLine());
             for(int querieNum = 0 ; querieNum < queries; querieNum++){
                 //read each line and add teh querie if it is not in the table 
                 engineStr = br.readLine();
@@ -35,8 +35,9 @@ public class proba{
                                                      // we won't pick the same engine twice in a 
                                                      // row.
                     switches++;
+                }
             }    
-            System.out.printf("Case #%d: %d", cases, switches);
+            System.out.printf("Case #%d: %d\n", cases, switches);
 
         } 
 
