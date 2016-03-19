@@ -9,7 +9,7 @@ public class probA{
     public static void main(String[] args) throws IOException{
         
 
-        BufferedReader br = new BufferedReader(new FileReader("A-small-practice.in"));
+        BufferedReader br = new BufferedReader(new FileReader(args[0]));
         String inputLine = br.readLine();
         int size = Integer.parseInt(inputLine);
         int engines;
