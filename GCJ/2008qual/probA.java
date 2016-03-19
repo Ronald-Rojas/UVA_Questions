@@ -21,7 +21,8 @@ public class probA{
             switches = 0;
             engineHash.clear();
             engines = Integer.parseInt(br.readLine()); // find number of engines
-            for(int enNum = 0; enNum < engines; enNum++) br.readLine(); // go through the number of engines 
+            for(int enNum = 0; enNum < engines; enNum++) br.readLine(); // go through the number 
+                                                                        //of engines 
             queries = Integer.parseInt(br.readLine());
             for(int querieNum = 0 ; querieNum < queries; querieNum++){
                 //read each line and add teh querie if it is not in the table 
