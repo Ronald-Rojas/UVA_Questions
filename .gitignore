@@ -1,4 +1,4 @@
 *.class # ignore java class files
 *.in # ignore input files
-*.out # ignroe output files
+*.out # ignore output files
 
