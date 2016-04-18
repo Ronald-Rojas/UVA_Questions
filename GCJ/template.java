@@ -12,7 +12,8 @@ public class template{
         File file = new File("output.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
         for( int input = 0; input < numinput; input++){
-
+            System.out.print("Case #" + (1 + input) + ":");
+            bw.write("Case #" + (1 +input) + ":");
 
         }
         bw.close();
