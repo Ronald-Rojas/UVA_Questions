@@ -1,76 +1,46 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package week1;
 
 /**
- * Created by ronald on 5/25/16.
+ * Created by Ronald on 4/22/2016.
  */
-public class probC {
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int numin = Integer.parseInt(br.readLine());
-        for( int in = 0; in < numin; in++){
-            String[] input = br.readLine().split(" ");
-            int len = Integer.parseInt(input[1]);
-            int width = Integer.parseInt(input[2]);
-            switch ( input[0].charAt(0)){
-                case 'K':
-                    solveking(len, width);
-                    break;
-                case 'k':
-                    solveknight(len, width);
-                    break;
-                case 'r':
-                    solverook(len, width);
-                    break;
-                case 'Q':
-                    solvequeen(len, width);
-                    break;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class probC{
+    public static void main(String[] args) throws NumberFormatException, IOException{
+        BufferedReader in = new BufferedReader( new FileReader("input.txt"));
+        int numinput = Integer.parseInt(in.readLine());
+        File file = new File("output.txt");
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+        for( int input = 0; input < numinput; input++) {
+            System.out.print("" + (1 + input));
+            bw.write("" + (1 + input));
+            String[] inputstrs = in.readLine().split(" ");
+            long Y = Long.parseLong(inputstrs[1]);
+            long pop = 1;
+            long prevpop = 1;
+            long temppop = 1;
+            if(Y != 1 || Y != 2){
+               for( long i = 3; i <= Y; i++){
+                   temppop = prevpop + pop;
+                   prevpop = pop;
+                   pop = temppop;
+                   if( pop/1_000_000_000 != 0 ){
+                       pop-=1_000_000_000;
+                       if(pop == 0){
+                           pop =1;
+                       }
+                   }
+               }
             }
-        }
+            System.out.print(" " + pop + "\n");
+            bw.write(" " + pop + "\n");
 
-    }
-    public static void solveking( int len, int width){
-        len ++;
-        len/=2;
-        width++;
-        width/=2;
-        int total = len * width;
-        System.out.printf("%d\n", total);
-    }
-    public static void solverook(int len, int width){
-        int min;
-        if( len < width)
-            min = len;
-        else
-            min = width;
-        System.out.printf("%d\n", min);
-    }
-    public static void solvequeen(int len, int width){
-        if(width > len){
-            int temp = width;
-            width = len;
-            len = temp;
         }
-        int total = 0;
-        if(width >= 8) {
-            total = width;
-        }else {
-            if (len == width)
-                total = width - 1;
-            else
-                total = width;
-        }
-        System.out.printf("%d\n", total);
-
-
-    }
-    public static void solveknight(int len, int width){
-        int total = len * width/2;
-        if(width%2 ==1){
-            total+= (width/2) + 1;
-        }
-        System.out.printf("%d\n", total);
-
+        bw.close();
     }
 }
