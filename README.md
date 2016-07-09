@@ -1,1 +1,2 @@
-This a collection of programming problems that I have solved, ranging from UVa virtual judge questions(UVA), to Google Code Jam questions(GCJ), to Project Euler questions(PJ), HackeRank questions(HR), TopCoder(TC), and CodeForces questions(CF).
+A collection of competitive programming problems I have solved.
+The problems come from many sources such as UVa virtual judge (UVA), Google Code Jam (GCJ), Project Euler (PJ), HackeRank (HR), TopCoder(TC), and CodeForces (CF).
